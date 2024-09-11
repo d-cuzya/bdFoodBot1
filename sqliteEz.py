@@ -53,6 +53,10 @@ class sqliteEz:
     def addProduct(self, _Name, _Description = "", _Price = "", _Img = ""):
         self.cur.execute("INSERT INTO Products (Name, Description, Price, Img) VALUES (?, ?, ?, ?);", (_Name, _Description, _Price, _Img))
         self.con.commit()
+    #Функция добовления строки в таблицу FoodMenu
+    def addFoodMenu(self, _DayOfTheWeek, _ProductID):
+        self.cur.execute("INSERT INTO FoodMenu (DayOfTheWeek, ProductID) VALUES (?, ?);", (_DayOfTheWeek, _ProductID))
+        self.con.commit()
         
     #==Гетеры для таблицы Products
     #Возвращает массив айдишников из таблицы Products

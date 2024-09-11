@@ -4,7 +4,10 @@ import sqliteEz
 def main():
     # Объект класса
     bd = sqliteEz.sqliteEz()
+    #addMetods
+    
 
+    #Гетеры
     #bd.getGroductsID()[i][0] - для парсинга
     print(bd.getProductsID())
     print(bd.getProguctName(1))
