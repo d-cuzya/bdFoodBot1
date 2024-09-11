@@ -57,16 +57,16 @@ class sqliteEz:
     #Возвращает массив айдишников из таблицы Products
     def getProductsID(self):
         return self.cur.execute("SELECT ID FROM Products;").fetchall()
-    #Возвращает массив айдишников из таблицы FoodMenu
-    def getFoodMenuID(self):
-        return self.cur.execute("SELECT ID FROM FoodMenu;").fetchall()
+    
     #Возвращает массив айдишников из таблицы UserList
     def getUserListID(self):
         return self.cur.execute("SELECT ID FROM UserList;").fetchall()
+    
+    
+    #==Гетеры для таблицы Products
     #Возвращает массив айдишников из таблицы Cart
     def getCartID(self):
         return self.cur.execute("SELECT ID FROM Cart;").fetchall()
-    
     #Возвращает Name из Products
     def getProguctName(self, _idProduct):
         return self.cur.execute("SELECT Name FROM Products WHERE ID = ?;", (_idProduct,)).fetchall()[0][0]
@@ -80,7 +80,13 @@ class sqliteEz:
     def getProguctImage(self, _idProduct):
         return self.cur.execute("SELECT Img FROM Products WHERE ID = ?;", (_idProduct,)).fetchall()[0][0]
 
-
+    #==Гетеры для FoodMenu
+    #Возвращает массив айдишников из таблицы FoodMenu
+    def getFoodMenuID(self):
+        return self.cur.execute("SELECT ID FROM FoodMenu;").fetchall()
+    #Возвращает Image из Products
+    def getProguctImage(self, _idProduct):
+        return self.cur.execute("SELECT Img FROM Products WHERE ID = ?;", (_idProduct,)).fetchall()[0][0]
 
     #===Get Методы===
     #Получение значение колонки из таблицы с определённым условием 
