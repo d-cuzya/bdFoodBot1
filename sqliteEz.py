@@ -53,20 +53,11 @@ class sqliteEz:
     def addProduct(self, _Name, _Description = "", _Price = "", _Img = ""):
         self.cur.execute("INSERT INTO Products (Name, Description, Price, Img) VALUES (?, ?, ?, ?);", (_Name, _Description, _Price, _Img))
         self.con.commit()
-    
+        
+    #==Гетеры для таблицы Products
     #Возвращает массив айдишников из таблицы Products
     def getProductsID(self):
         return self.cur.execute("SELECT ID FROM Products;").fetchall()
-    
-    #Возвращает массив айдишников из таблицы UserList
-    def getUserListID(self):
-        return self.cur.execute("SELECT ID FROM UserList;").fetchall()
-    
-    
-    #==Гетеры для таблицы Products
-    #Возвращает массив айдишников из таблицы Cart
-    def getCartID(self):
-        return self.cur.execute("SELECT ID FROM Cart;").fetchall()
     #Возвращает Name из Products
     def getProguctName(self, _idProduct):
         return self.cur.execute("SELECT Name FROM Products WHERE ID = ?;", (_idProduct,)).fetchall()[0][0]
@@ -84,9 +75,44 @@ class sqliteEz:
     #Возвращает массив айдишников из таблицы FoodMenu
     def getFoodMenuID(self):
         return self.cur.execute("SELECT ID FROM FoodMenu;").fetchall()
-    #Возвращает Image из Products
-    def getProguctImage(self, _idProduct):
-        return self.cur.execute("SELECT Img FROM Products WHERE ID = ?;", (_idProduct,)).fetchall()[0][0]
+    #Возвращает DayOfTheWeek из Products
+    def getFoodMenuDayOfTheWeek(self, _idProduct):
+        return self.cur.execute("SELECT DayOfTheWeek FROM FoodMenu WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает DayOfTheWeek из Products
+    def getFoodMenuProductID(self, _idProduct):
+        return self.cur.execute("SELECT ProductID FROM FoodMenu WHERE ID = ?;", (_idProduct,)).fetchall()
+    
+    #==Гетеры для UserList
+    #Возвращает массив айдишников из таблицы UserList
+    def getUserListID(self):
+        return self.cur.execute("SELECT ID FROM UserList;").fetchall()
+    #Возвращает FirstName из UserList
+    def getUserListFirstName(self, _idProduct):
+        return self.cur.execute("SELECT FirstName FROM UserList WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает SecondName из UserList
+    def getUserListSecondName(self, _idProduct):
+        return self.cur.execute("SELECT SecondName FROM UserList WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает Username из UserList
+    def getUserListUsername(self, _idProduct):
+        return self.cur.execute("SELECT Username FROM UserList WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает UserID из UserList
+    def getUserListUserID(self, _idProduct):
+        return self.cur.execute("SELECT UserId FROM UserList WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает Admin из UserList
+    def getUserListAdmin(self, _idProduct):
+        return self.cur.execute("SELECT Admin FROM UserList WHERE ID = ?;", (_idProduct,)).fetchall()
+
+    #==Гетеры для Cart
+    #Возвращает массив айдишников из таблицы Cart
+    def getCartID(self):
+        return self.cur.execute("SELECT ID FROM Cart;").fetchall()
+    #Возвращает UserID из Cart
+    def getCartUserID(self, _idProduct):
+        return self.cur.execute("SELECT UserID FROM Cart WHERE ID = ?;", (_idProduct,)).fetchall()
+    #Возвращает DayOfTheWeek из Cart
+    def getCartDayOfTheWeek(self, _idProduct):
+        return self.cur.execute("SELECT DayOfTheWeek FROM Cart WHERE ID = ?;", (_idProduct,)).fetchall()
+
 
     #===Get Методы===
     #Получение значение колонки из таблицы с определённым условием 
